@@ -41,7 +41,7 @@
             text-align: center;
             animation: bounceIn 1.5s ease-out;
             max-width: 800px;
-            width: 90%;
+            width: 90vw; /* Usando viewport width para maior flexibilidade */
             position: relative;
             z-index: 2;
             transform: translateZ(0);
@@ -65,7 +65,7 @@
 
         h1 {
             color: #ff69b4;
-            font-size: 4em;
+            font-size: 4rem; /* Usando rem para responsividade de fonte */
             margin-bottom: 20px;
             text-shadow: 3px 3px #ffd700;
             animation: pulsate 2s infinite alternate;
@@ -83,14 +83,14 @@
 
         p {
             color: #333;
-            font-size: 1.5em;
+            font-size: 1.2rem; /* Usando rem para responsividade de fonte */
             line-height: 1.6;
             margin-bottom: 20px;
         }
 
         .botao-carta {
             padding: 15px 30px;
-            font-size: 1.2em;
+            font-size: 1.2rem; /* Usando rem para responsividade de fonte */
             background-color: #007bff;
             color: white;
             border: none;
@@ -130,7 +130,7 @@
 
         .foto-fundo {
             position: fixed;
-            width: 450px;
+            width: 300px;
             height: auto;
             opacity: 0.9;
             z-index: 3;
@@ -164,7 +164,7 @@
             top: 20px; /* Distância do fundo */
             left: 20px; /* Distância da esquerda */
             padding: 10px 15px; /* Tamanho do botão */
-            font-size: 0.9em;
+            font-size: 0.9rem; /* Usando rem */
             background-color: #ff69b4; /* Cor rosa do seu título */
             color: white;
             border: none;
@@ -191,6 +191,78 @@
             height: 100px; /* Ajuste conforme necessário */
             z-index: 5; /* Garante que está acima de tudo */
         }
+
+        /* Media Queries para responsividade */
+        @media (max-width: 768px) {
+            .container-aniversario {
+                padding: 20px 25px;
+                max-width: 95%;
+                width: 90vw; /* Mantendo vw para flexibilidade */
+            }
+
+            h1 {
+                font-size: 2.5rem; /* Reduzindo fonte para telas médias */
+            }
+
+            p {
+                font-size: 1rem; /* Reduzindo fonte para telas médias */
+            }
+
+            .botao-carta {
+                font-size: 1rem;
+                padding: 12px 20px;
+            }
+
+            .foto-fundo {
+                width: 60vw; /* Largura das fotos relativa ao viewport */
+            }
+
+            #botao-secreto {
+                font-size: 0.8rem;
+                padding: 8px 12px;
+            }
+
+            #container-botao-secreto {
+                width: 70px;
+                height: 70px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem; /* Mais uma redução para telas pequenas */
+            }
+
+            .container-aniversario {
+                padding: 15px 20px;
+                width: 95vw; /* Ajuste para telas muito pequenas */
+            }
+
+            p {
+                font-size: 0.9rem; /* Ajustando fonte para telas muito pequenas */
+            }
+
+            .foto-fundo {
+                display: none; /* Esconde fotos se a tela for muito pequena */
+            }
+
+            .botao-carta {
+                width: 100%; /* Botão ocupa a largura total em telas muito pequenas */
+            }
+
+            #botao-secreto {
+                font-size: 0.7rem;
+                padding: 6px 10px;
+                top: 10px;
+                left: 10px;
+            }
+
+            #container-botao-secreto {
+                width: 50px;
+                height: 50px;
+            }
+        }
+
     </style>
 </head>
 <body>
