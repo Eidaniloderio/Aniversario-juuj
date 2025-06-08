@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Aniversário!</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background-color: #f8f9fa;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #video-fundo {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1;
+            background-size: cover;
+            background-position: center;
+            object-fit: cover;
+            filter: brightness(70%);
+        }
+
+        .container-aniversario {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 40px 60px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            animation: bounceIn 1.5s ease-out;
+            max-width: 800px;
+            width: 90%;
+            position: relative;
+            z-index: 2;
+            transform: translateZ(0);
+        }
+
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0.1);
+                opacity: 0;
+            }
+
+            60% {
+                transform: scale(1.1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        h1 {
+            color: #ff69b4;
+            font-size: 4em;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px #ffd700;
+            animation: pulsate 2s infinite alternate;
+        }
+
+        @keyframes pulsate {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(1.05);
+            }
+        }
+
+        p {
+            color: #333;
+            font-size: 1.5em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .botao-carta {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 0;
+            z-index: 3;
+            display: block;
+            margin: 20px auto 0 auto;
+            width: fit-content;
+        }
+
+        .botao-carta:hover {
+            background-color: #0056b3;
+        }
+
+        .mensagem {
+            display: none;
+            z-index: 3;
+        }
+
+        .mensagem.mostrar {
+            display: block;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .foto-fundo {
+            position: fixed;
+            width: 450px;
+            height: auto;
+            opacity: 0.9;
+            z-index: 3;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            display: none;
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+
+        .foto-direita-cima {
+            top: 20px;
+            right: 20px;
+            transform: scale(0.8) rotate(5deg);
+        }
+
+        .foto-esquerda-baixo {
+            bottom: 20px;
+            left: 20px;
+            transform: scale(0.8) rotate(-5deg);
+        }
+
+        .foto-fundo.mostrar {
+            display: block;
+            opacity: 1;
+            transform: scale(1) rotate(0deg);
+        }
+
+        /* Novo estilo para o botão secreto */
+        #botao-secreto {
+            position: fixed;
+            bottom: 20px; /* Distância do fundo */
+            left: 20px; /* Distância da esquerda */
+            padding: 10px 15px; /* Tamanho do botão */
+            font-size: 0.9em;
+            background-color: #ff69b4; /* Cor rosa do seu título */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            transition: opacity 0.3s ease, transform 0.2s ease;
+            z-index: 4; /* Garante que ele fique acima de tudo */
+            opacity: 0; /* Começa invisível */
+        }
+
+        #botao-secreto:hover {
+            opacity: 1; /* Torna visível ao passar o mouse */
+            transform: scale(1.05); /* Pequena animação ao passar o mouse */
+            background-color: #ff4d94;
+        }
+
+        /* Novo estilo para o container que ativa o hover */
+        #container-botao-secreto {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100px; /* Ajuste conforme necessário */
+            height: 100px; /* Ajuste conforme necessário */
+            z-index: 5; /* Garante que está acima de tudo */
+        }
+    </style>
+</head>
+<body>
+    <video autoplay muted loop id="video-fundo">
+        <source src="midia/Parabéns Júlia!!.mp4" type="video/mp4">
+        Seu navegador não suporta a tag de vídeo.
+    </video>
+
+    <img src="midia/juuj01_aniversario.png" alt="Foto de Aniversário" class="foto-fundo foto-direita-cima">
+    <img src="midia/juuj02_aniversario.png" alt="Foto de Aniversário" class="foto-fundo foto-esquerda-baixo">
+
+    <div class="container-aniversario">
+        <h1>🎉 Parabéns JuuJ! 🎊</h1>
+
+        <div class="mensagem">
+            <p>
+                <p>Feliz aniversário, minha melhor amiga! 🎉💖</p>
+
+                <p>Hoje é o dia de celebrar alguém que é muito mais do que amiga: é minha irmã de coração, minha parceira de risadas, choros, aventuras e segredos. Que neste novo ano da sua vida você receba todo o amor, alegria e sucesso que merece — porque você é incrível, por dentro e por fora!</p>
+                <p>
+                    Obrigada por ser quem você é, por estar sempre ao meu lado, e por fazer a vida ser tão mais leve e divertida só com a sua presença. Te desejo um novo ciclo cheio de sonhos realizados, momentos inesquecíveis e muitos motivos para sorrir.
+                </p>
+
+                <p>Te amo demais! 💕✨</p>
+                <p>Parabéns! 🎂🎈</p>
+
+                <p>Se quiser, posso personalizar mais com o nome dela, hobbies, alguma lembrança de vocês duas ou o estilo de mensagem (engraçada, poética, emotiva etc.). Quer?</p>
+            </p>
+            <button class="botao-carta" onclick="mostrarMensagem()">Fechar Cartinha</button>
+        </div>
+
+        <button id="abrirCartinhaBtn" class="botao-carta" onclick="mostrarMensagem()">Abrir Cartinha</button>
+    </div>
+
+    <div id="container-botao-secreto">
+        <button id="botao-secreto" onclick="window.location.href='secreto.html'">
+            Que isso?
+        </button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const videoFundo = document.getElementById('video-fundo');
+            const abrirCartinhaBtn = document.getElementById('abrirCartinhaBtn');
+            const botaoSecreto = document.getElementById('botao-secreto');
+            let cartinhaFechada = false; // Flag para rastrear se a cartinha foi fechada
+
+            // Inicialmente esconde o botão secreto
+            botaoSecreto.style.opacity = '0';
+
+            // Adiciona event listeners para mostrar/esconder o botão secreto no hover
+            botaoSecreto.addEventListener('mouseover', function() {
+                if (cartinhaFechada) {
+                    botaoSecreto.style.opacity = '1';
+                }
+            });
+
+            botaoSecreto.addEventListener('mouseout', function() {
+                botaoSecreto.style.opacity = '0';
+            });
+
+            // Salva a referência da função original mostrarMensagem
+            const originalMostrarMensagem = window.mostrarMensagem;
+
+            // Sobrescreve a função mostrarMensagem para incluir a lógica do áudio E do botão secreto
+            window.mostrarMensagem = function () {
+                // Chama a função original para gerenciar a visibilidade da mensagem e das fotos
+                originalMostrarMensagem();
+
+                // Verifica se a mensagem está visível (foi aberta)
+                if (document.querySelector('.mensagem').classList.contains('mostrar')) {
+                    videoFundo.muted = false; // Desmuta o vídeo
+                    videoFundo.play().catch(error => {
+                        console.log("Erro ao tentar tocar o vídeo:", error);
+                    });
+                    botaoSecreto.style.opacity = '0'; // Garante que o botão secreto esteja escondido quando a cartinha está aberta
+                    cartinhaFechada = false; // Reseta o flag quando a cartinha é aberta
+                } else { // Se a mensagem foi fechada
+                    videoFundo.muted = true;
+                    cartinhaFechada = true; // Define o flag quando a cartinha é fechada
+                    botaoSecreto.style.opacity = '0'; // Garante que o botão secreto esteja escondido inicialmente
+                }
+            };
+        });
+
+        // A função original mostrarMensagem precisa estar global para ser chamada acima
+        function mostrarMensagem() {
+            const mensagem = document.querySelector('.mensagem');
+            const abrirBotao = document.getElementById('abrirCartinhaBtn');
+            const fecharBotao = mensagem.querySelector('.botao-carta');
+            const fotoDireita = document.querySelector('.foto-direita-cima');
+            const fotoEsquerda = document.querySelector('.foto-esquerda-baixo');
+
+            mensagem.classList.toggle('mostrar');
+            fotoDireita.classList.toggle('mostrar');
+            fotoEsquerda.classList.toggle('mostrar');
+
+            if (mensagem.classList.contains('mostrar')) {
+                abrirBotao.style.display = 'none';
+                fecharBotao.textContent = 'Fechar Cartinha';
+            } else {
+                abrirBotao.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
